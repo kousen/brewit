@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="baseline_unit_half">4dp</dimen>
+    <dimen name="baseline_unit">8dp</dimen>
+    <dimen name="baseline_unit_1_5x">12dp</dimen>
+    <dimen name="baseline_unit_2x">16dp</dimen>
+    <dimen name="baseline_unit_3x">32dp</dimen>
+</resources>
