@@ -4,7 +4,7 @@ import kotlinx.coroutines.*
 
 fun main() {
 
-    val exceptionHandler = CoroutineExceptionHandler { context, exception ->
+    val exceptionHandler = CoroutineExceptionHandler { _, exception ->
         println("Caught exception $exception")
     }
 

@@ -9,8 +9,9 @@ import javax.inject.Singleton
 @Singleton
 class BreweryRetrofit {
 
-    val retrofit = lazy {
-        val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+    private val retrofit by lazy {
+        val logger = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC }
 
         val logClient = OkHttpClient.Builder()
             .addInterceptor(logger)
@@ -25,7 +26,7 @@ class BreweryRetrofit {
     }
 
     fun <T> create(service: Class<out T>): T {
-        return retrofit.value.create(service)
+        return retrofit.create(service)
     }
 
     companion object {
