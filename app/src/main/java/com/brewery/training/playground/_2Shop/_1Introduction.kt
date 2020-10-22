@@ -21,7 +21,8 @@ fun main() {
 
 // Return a set containing all the customers of this shop
 fun Shop.getSetOfCustomers(): Set<Customer> {
-    TODO()
+    // TODO()
+    return customers.toSet()
 //    return this.customers
 }
 
