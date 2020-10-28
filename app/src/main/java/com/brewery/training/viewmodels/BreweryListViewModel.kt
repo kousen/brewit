@@ -11,7 +11,7 @@ class BreweryListViewModel @Inject constructor(
     private val breweryRepository: BreweryRepository
 ) : ViewModel() {
 
-    val _listLiveData = MutableLiveData<List<Brewery>>()
+    private val _listLiveData = MutableLiveData<List<Brewery>>()
     val listLiveData = getFilter().switchMap {filter ->
         refresh(filter)
         breweryRepository.get(if (filter.isNullOrBlank()) "%" else "%$filter%")
