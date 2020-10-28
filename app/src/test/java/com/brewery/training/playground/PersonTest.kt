@@ -12,6 +12,9 @@ class PersonTest {
         val person2 = Person("Jean-Luc", LocalDate.of(2305, Month.JULY, 23))
         assertEquals(person2, person1)
         assertNotSame(person1, person2)
+
+        assertTrue(person1 == person2)   // invokes the equals function
+        assertFalse(person1 === person2) // checks reference equality
     }
 
     @Test

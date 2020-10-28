@@ -11,7 +11,8 @@ class BreweryRetrofit {
 
     private val retrofit by lazy {
         val logger = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC }
+            level = HttpLoggingInterceptor.Level.BASIC
+        }
 
         val logClient = OkHttpClient.Builder()
             .addInterceptor(logger)
@@ -30,6 +31,6 @@ class BreweryRetrofit {
     }
 
     companion object {
-        const val BASE_URL = "https://api.openbrewerydb.org/"
+         const val BASE_URL = "https://api.openbrewerydb.org/"
     }
 }
