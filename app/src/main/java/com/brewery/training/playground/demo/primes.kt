@@ -13,7 +13,7 @@ fun addProduct(name: String, price: Double = 0.0, desc: String? = null) =
 fun main() {
     sqrt(4)
 
-    val numList = listOf(100, 101, 102, 103, 104, 105)
+    val numList = listOf(100, 101, 102, 103, 104, 105, 106)
 
     val firstFromSequence = numList.asSequence()
         .filter { println("mod 3 of $it"); it % 3 == 0 }
