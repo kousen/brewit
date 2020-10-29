@@ -22,17 +22,18 @@ class BreweryRepository @Inject constructor(
         list
     }
 
-    fun get(city: String) : LiveData<List<Brewery>> {
+    fun get(city: String): LiveData<List<Brewery>> {
         return breweryDao.get(city)
     }
 
-    suspend fun refreshBreweryList(city: String): List<Brewery> = withContext(Dispatchers.IO) {
-        val listBreweriesApi = breweryRetrofit.create(ListBreweriesApi::class.java)
-        val list = listBreweriesApi.get(city)
+    suspend fun refreshBreweryList(city: String): List<Brewery> =
+        withContext(Dispatchers.IO) {
+            val listBreweriesApi = breweryRetrofit.create(ListBreweriesApi::class.java)
+            val list = listBreweriesApi.get(city)
 
-        //update DAO
-        breweryDao.insert(list)
+            //update DAO
+            breweryDao.insert(list)
 
-        list
-    }
+            list
+        }
 }
