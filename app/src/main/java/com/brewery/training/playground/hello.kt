@@ -5,7 +5,12 @@ package com.brewery.training.playground
 @JvmOverloads
 fun greeting(name: String = "World") = "Hello, $name!"
 
+
+
 fun main(args: Array<String>) {
+    val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
+
+
     /// name = (args.length != 0) ? args[0] : "World"
     // val name = if (args.isNotEmpty()) args[0] else "World"
     var name: String? = null;

@@ -22,7 +22,11 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            val fragment = BreweryListFragment().apply { arguments = Bundle().apply { putString(BreweryListViewModel.FILTER_SAVED_STATE_KEY, "portland") } }
+            val fragment = BreweryListFragment().apply {
+                arguments = Bundle().apply {
+                    putString(BreweryListViewModel.FILTER_SAVED_STATE_KEY, "portland")
+                }
+            }
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment, MAIN_FRAGMENT_TAG).commit()
         }
