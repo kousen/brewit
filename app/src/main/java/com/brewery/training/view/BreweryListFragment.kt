@@ -22,7 +22,7 @@ class BreweryListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: BreweryListViewModelFactory
 
-    val viewModel: BreweryListViewModel by viewModels { viewModelFactory }
+    private val viewModel: BreweryListViewModel by viewModels { viewModelFactory }
 
     lateinit var binding: BreweryListLayoutBinding
 
