@@ -23,7 +23,7 @@ data class Wind(
     val deg: Double
 )
 
-data class System(
+data class ModelSystem(
     val message: String,
     val country: String,
     val sunrise: Long,
@@ -57,22 +57,22 @@ data class Model(
     val cod: Int,
     val coord: Coordinates,
     val main: Main,
-    val sys: System,
+    val sys: ModelSystem,
     val wind: Wind,
     val clouds: Clouds,
     val weather: List<Weather>
 ) {
     // Convert from Kelvin to Fahrenheit
-    fun convertTemp(temp: Double) =
+    private fun convertTemp(temp: Double) =
         9 * (temp - 273.15) / 5 + 32
 
-    fun convertTime(time: Long): LocalDateTime =
+    private fun convertTime(time: Long): LocalDateTime =
         Instant.ofEpochSecond(time)
             .atZone(ZoneId.systemDefault()).toLocalDateTime()
 
     // 1 m/sec * 60 sec/min * 60 min/hr * 100 cm/m * 1 in/2.54 cm
     //      * 1 ft/12 in * 1 mi/5280 ft
-    fun convertSpeed(mps: Double) =
+    private fun convertSpeed(mps: Double) =
         mps * 60 * 60 * 100 / 2.54 / 12 / 5280
 
     private val time: LocalDateTime
@@ -160,7 +160,7 @@ suspend fun asyncZips(vararg zips: String) = coroutineScope {
     }
 }
 
-suspend fun asyncCities(vararg cities: String) = coroutineScope {
+suspend fun asyncCities(vararg cities: String): List<Model> = coroutineScope {
     val owm = OpenWeatherMap()
     withContext(Dispatchers.IO) {
         cities.map { city ->
@@ -179,7 +179,7 @@ inline fun <R> measureTimeAndReturn(block: () -> R): Pair<Long, R> {
 fun main() = runBlocking<Unit> {
     // synchronous
     val (time, resultList) = measureTimeAndReturn {
-        syncZips("06447", "96801", "02115")
+        syncZips("06447", "96801", "02115", "97222")
     }
     println("Elapsed time (sync): ${time}ms")
     resultList.forEach { println(it.simpleString()) }
@@ -187,7 +187,7 @@ fun main() = runBlocking<Unit> {
     println()
     // asynchronous
     measureTimeAndReturn {
-        asyncZips("06447", "96801", "02115")
+        asyncZips("06447", "96801", "02115", "97222")
     }.also { (time, results) ->
         println("Elapsed time (async): ${time}ms")
         results.forEach { result -> println(result.simpleString()) }
@@ -196,7 +196,7 @@ fun main() = runBlocking<Unit> {
     println()
     // By cities
     measureTimeAndReturn {
-        asyncCities("London", "Hyderabad", "San Francisco")
+        asyncCities("London", "Hyderabad", "San Francisco", "Portland")
     }.also { (time, results) ->
         println("Elapsed time (async): ${time}ms")
         results.forEach { result -> println(result.simpleString()) }

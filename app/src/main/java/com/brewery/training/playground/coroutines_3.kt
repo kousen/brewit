@@ -7,7 +7,7 @@ val scope = CoroutineScope(Job())
 
 suspend fun main() = coroutineScope {
     val elapsedTime = measureTimeMillis {
-        val job = scope.launch {
+        val job1 = scope.launch {
             networkCall(1)
         }
 
@@ -19,7 +19,7 @@ suspend fun main() = coroutineScope {
             networkCall(3)
         }
 
-        job.invokeOnCompletion { throwable ->
+        job1.invokeOnCompletion { throwable ->
             if (throwable is CancellationException) {
                 println("Coroutine 1 was cancelled")
             }
@@ -37,7 +37,7 @@ suspend fun main() = coroutineScope {
             }
         }
 
-        job.cancel()
+        job1.cancel()
         delay(1000)
         onDestroy()
         delay(1000)

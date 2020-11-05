@@ -1,13 +1,19 @@
 package com.brewery.training.playground
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 fun main() = runBlocking<Unit> {
     launchWithIO()
     launchWithDefault()
+    asyncCall()
+}
+
+suspend fun asyncCall() = coroutineScope {
+    async(Dispatchers.IO) {
+        delay(100L)
+        println("Making async call")
+        println(Thread.currentThread().name)
+    }.await()
 }
 
 suspend fun launchWithIO() {
