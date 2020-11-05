@@ -1,8 +1,7 @@
 package com.brewery.training.playground
 
 fun fibonacciFold(n: Long) =
-    (2 until n).fold(1L to 1L) { (prev, curr), x ->
-        println("$x: curr to (prev + curr): ${curr to (prev + curr)}")
+    (2..n + 1).fold(1 to 0) { (prev, curr), _ ->
         curr to (prev + curr)
     }.second
 
