@@ -1,4 +1,4 @@
-package com.brewery.training.playground
+package com.brewery.training.playground.coroutines
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

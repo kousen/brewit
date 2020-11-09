@@ -1,4 +1,4 @@
-package com.brewery.training.playground
+package com.brewery.training.playground.coroutines
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
