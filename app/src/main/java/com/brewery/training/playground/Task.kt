@@ -1,6 +1,6 @@
 package com.brewery.training.playground
 
-class Task(val name: String, _priority: Int = DEFAULT_PRIORITY) {
+class Task(val name: String, _priority: Int = DEFAULT_PRIORITY, val field: Int = MIN_PRIORITY) {
 
     companion object {
         const val MIN_PRIORITY = 1
@@ -11,7 +11,12 @@ class Task(val name: String, _priority: Int = DEFAULT_PRIORITY) {
     var priority = validPriority(_priority)
         set(value) {
             field = validPriority(value)
+            // field = this.field
         }
+
+//    fun setPriority(value: Int) {
+//        field = value
+//    }
 
     private fun validPriority(p: Int) =
         p.coerceIn(MIN_PRIORITY, MAX_PRIORITY)

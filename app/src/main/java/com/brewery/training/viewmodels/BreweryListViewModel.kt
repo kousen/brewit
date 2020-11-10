@@ -1,5 +1,6 @@
 package com.brewery.training.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.brewery.training.data.Brewery
 import com.brewery.training.data.BreweryRepository
@@ -20,6 +21,7 @@ class BreweryListViewModel @Inject constructor(
             }
 
     fun refresh(filter: String?) {
+        Log.d(TAG, "calling refresh with filter $filter")
         viewModelScope.launch {
             if (filter.isNullOrBlank()) {
                 _listLiveData.value = breweryRepository.refreshBreweryList()
@@ -35,5 +37,6 @@ class BreweryListViewModel @Inject constructor(
 
     companion object {
         const val FILTER_SAVED_STATE_KEY = "BREWERY_FILTER_SAVED_STATE_KEY"
+        val TAG = BreweryListViewModel::class.simpleName
     }
 }
