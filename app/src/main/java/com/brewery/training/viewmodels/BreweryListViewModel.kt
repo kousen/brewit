@@ -32,6 +32,10 @@ class BreweryListViewModel @Inject constructor(
         }
     }
 
+    fun setCity(city: String) {
+        savedStateHandle.set(FILTER_SAVED_STATE_KEY, city)
+    }
+
     private fun getFilter() =
         savedStateHandle.getLiveData<String>(FILTER_SAVED_STATE_KEY)
 

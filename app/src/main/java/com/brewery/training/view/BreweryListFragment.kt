@@ -1,13 +1,12 @@
 package com.brewery.training.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.brewery.training.R
 import com.brewery.training.databinding.BreweryListLayoutBinding
 import com.brewery.training.viewmodels.BreweryListViewModel
 import com.brewery.training.viewmodels.BreweryListViewModelFactory
@@ -32,7 +31,7 @@ class BreweryListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = BreweryListLayoutBinding.inflate(inflater, container, false)
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -45,7 +44,22 @@ class BreweryListFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 
         viewModel.listLiveData.observe(viewLifecycleOwner) { list -> adapter.setItems(list) }
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_city_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.portland -> {
+            viewModel.setCity("portland")
+            true
+        }
+        R.id.hartford -> {
+            viewModel.setCity("hartford")
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
 }

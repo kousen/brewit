@@ -24,6 +24,7 @@
                 android:id="@+id/brewery_image"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:contentDescription="@string/description"
                 android:src="@drawable/ic_beer"
                 app:brewerBackground="@{content.brewery_type}"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,6 +59,19 @@
                 app:layout_constraintTop_toBottomOf="@id/brewery_name"
                 tools:text="Oldest Portland brewery in town" />
 
+            <TextView
+                android:id="@+id/brewery_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/baseline_unit_2x"
+                android:layout_marginTop="@dimen/baseline_unit_half"
+                android:layout_marginBottom="@dimen/baseline_unit"
+                android:text="@{content.city}"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/brewery_image"
+                app:layout_constraintTop_toBottomOf="@id/brewery_street"
+                tools:text="Oldest Portland brewery in town" />
 
             <TextView
                 android:id="@+id/brewery_website"
@@ -69,9 +83,10 @@
                 android:textAlignment="viewStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/brewery_image"
-                app:layout_constraintTop_toBottomOf="@id/brewery_street"
+                app:layout_constraintTop_toBottomOf="@id/brewery_city"
                 tools:text="Oldest Portland brewery in town" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </layout>
