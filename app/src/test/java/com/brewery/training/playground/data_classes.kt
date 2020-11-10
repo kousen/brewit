@@ -27,5 +27,7 @@ fun main() {
     // - toString, equals, hashCode
     // - copy function as a copy-constructor
     // - componentN functions for destructuring
+
+    val s = emp1 as? Employee
 }
 

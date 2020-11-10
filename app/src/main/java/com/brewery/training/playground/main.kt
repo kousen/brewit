@@ -8,7 +8,7 @@ fun createPerson(n: String, a: Int) = Person(n, a)
 
 fun getGreeting(name: String) = "Hello, $name!"
 
-fun nullability(x: String, y: String?) {
+fun nullability(x: String, y: String?): Unit {
     // Not-null variable
     println(x.length)
 
