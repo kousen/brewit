@@ -1,6 +1,7 @@
 package com.brewery.training.playground._2Shop
 
 import java.util.*
+import kotlin.collections.HashSet
 
 /*
  * This part of workshop was inspired by:
@@ -21,7 +22,6 @@ fun main() {
 
 // Return a set containing all the customers of this shop
 fun Shop.getSetOfCustomers(): Set<Customer> {
-    TODO()
-//    return this.customers
+    return this.customers.toSet()
 }
 

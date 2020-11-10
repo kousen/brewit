@@ -6,14 +6,17 @@ fun main() {
     result == listOf('a', 'b', 'c', '1', '2')
 
     println(result)   // [a, b, c, 1, 2]
+
+    val listOfLists = listOf(listOf("a", "bbb", "cc"), listOf("1", "22"))
+    listOfLists.flatMap { list -> list.toList() }.also(::println)
 }
 
 // Return all products that were ordered by customer
 val Customer.orderedProducts: Set<Product> get() {
-    TODO()
+    return orders.flatMap { it.products }.toSet()
 }
 
 // Return all products that were ordered by at least one customer
 val Shop.allOrderedProducts: Set<Product> get() {
-    TODO()
+    return customers.flatMap { it.orderedProducts }.toSet()
 }
