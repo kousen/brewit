@@ -23,4 +23,7 @@ fun main() {
     for ((idx,vlu) in strings.withIndex()) {
         println("$idx holds $vlu")
     }
+
+    val squares = Array(5) { i -> (i * i).toString() }
+    println(squares.asList())
 }
