@@ -15,10 +15,10 @@ fun main() = runBlocking<Unit> {
     }
 
     val elapsedTime = measureTimeMillis {
-        awaitAll(deferred1, deferred2).also(::println)
-        awaitAll(deferred2, deferred1).also(::println)
-//        deferred1.await().also(::println)
-//        deferred2.await().also(::println)
+//        awaitAll(deferred1, deferred2).also(::println)
+//        awaitAll(deferred2, deferred1).also(::println)
+        deferred1.await().also(::println)
+        deferred2.await().also(::println)
     }
 
     println("The results finished after ${elapsedTime}ms")
